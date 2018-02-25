@@ -1,11 +1,17 @@
-from flask import Flask, jsonify, request, render_template
-import time
+from flask import Flask
+from flask import jsonify
+from flask import request
+from flask import render_template
 import datetime
+import redis
 
 app = Flask(__name__)
 
+r = redis.StrictRedis(host='localhost', port=6379, db=0)
+
 def time_ip(request):
 	time_stamp = datetime.datetime.utcnow()
+	r.set(str(time_stamp), str(request.remote_addr))
 	return time_stamp, request.remote_addr
 
 @app.route("/")
