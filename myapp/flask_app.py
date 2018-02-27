@@ -20,11 +20,10 @@ def time_ip(request, endpoint):
 	r.set(log, endpoint)
 	return time_stamp, request.remote_addr
 
-@app.route("/")
-@app.route("/v1/logs", methods=["GET", "POST"])
-def logs():
-	time_stamp, address = time_ip(request, 'logs')
-	logs_json = r.get('logs')
+def return_logs():
+	logs_list = []
+	helloworld_list = []
+	helloworldlogs_list = []
 	for key in r.keys():
 		if key != 'logs'.encode('utf-8') and key != 'hello-world/logs'.encode('utf-8') and key != 'hello-world'.encode('utf-8'):
 			print key, r[key]
@@ -36,6 +35,14 @@ def logs():
 				helloworldlogs_list.append(key)
 			api = jsonify({"logset": [{"endpoint": "hello-world", "logs": sorted(helloworld_list)}, {"endpoint": "logs", "logs": sorted(logs_list)}, {"endpoint": "hello-world/logs", "logs": sorted(helloworldlogs_list)}]})
 	return api
+
+@app.route("/")
+@app.route("/v1/logs", methods=["GET", "POST"])
+def logs():
+	time_stamp, address = time_ip(request, 'logs')
+	logs_json = r.get('logs')
+	logs = return_logs()
+	return logs
 
 @app.route("/v1/helloworld", methods=['GET', 'POST'])
 @app.route("/v1/helloworld/<name>", methods=['GET', 'POST'])
