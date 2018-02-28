@@ -8,7 +8,7 @@ import json
 
 app = Flask(__name__)
 
-r = redis.StrictRedis(host='localhost', port=6379, db=0)
+r = redis.StrictRedis(host='redis', port=6379, db=0)
 
 def time_ip(request, endpoint):
 	time_stamp = datetime.datetime.utcnow()

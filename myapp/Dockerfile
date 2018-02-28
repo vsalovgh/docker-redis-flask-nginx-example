@@ -1,6 +1,7 @@
-FROM ubuntu:14.04
-
+FROM python:2.7
 MAINTAINER Victor Salov "vsalov@yahoo.com"
-RUN apt-get update -y && \
-	apt-get install -y python-pip python-dev
-COPY ./requirements.txt /myapp/requirements.txt
+ADD . /app
+COPY ./requirements.txt /app/requirements.txt
+WORKDIR /app
+RUN pip install -r requirements.txt
+CMD ["python", "app.py"]
