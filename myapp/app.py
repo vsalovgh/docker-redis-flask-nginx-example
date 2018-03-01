@@ -42,7 +42,7 @@ def index():
 def helloworld_logs():
 	logs = return_logs()
 	helloworld_logs = logs["logset"][-1]
-	return render_template("logs.html", logs=helloworld_logs)
+	return render_template("logshw.html", logs=helloworld_logs)
 
 @app.route("/v1/logs", methods=["GET", "POST"])
 def logs():
@@ -65,4 +65,4 @@ def helloworld(name=None):
 		return jsonify({"logs": helloworld_logs["logs"]})
 
 if __name__ == "__main__":
-	app.run(debug='True', host='0.0.0.0', port=8000)
+	app.run(debug='True', host='0.0.0.0', port=8080)

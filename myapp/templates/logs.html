@@ -1,2 +1,15 @@
 <!doctype html>
-<h1>{{ logs }}</h1>
+<html>
+<body>
+<link rel="stylesheet" type="text/css" href="/static/css_styling.css">
+<table>
+<h2>Logs Table:</h2>
+{% for log in logs['logset'] %}
+<tr>
+<td>{{ log['endpoint'] }}</td>
+<td>{{ log['logs'] }}</td>
+</tr>
+{% endfor %}
+</table>
+</body>
+</html>
