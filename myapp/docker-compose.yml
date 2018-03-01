@@ -1,8 +1,18 @@
 version: '3'
 services:
   web:
+    restart: always
     build: .
-    ports:
-      - "5000:5000"
+    expose:
+      - "8080"
+    volumes:
+      - /app/static
   redis:
     image: "redis"
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"

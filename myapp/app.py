@@ -34,6 +34,16 @@ def return_logs():
 	return api
 
 @app.route("/")
+def index():
+	logs = return_logs()
+	return render_template("logs.html", logs=logs)
+
+@app.route("/v1")
+def helloworld_logs():
+	logs = return_logs()
+	helloworld_logs = logs["logset"][-1]
+	return render_template("logs.html", logs=helloworld_logs)
+
 @app.route("/v1/logs", methods=["GET", "POST"])
 def logs():
 	time_stamp, address = time_ip(request, 'logs')
@@ -55,4 +65,4 @@ def helloworld(name=None):
 		return jsonify({"logs": helloworld_logs["logs"]})
 
 if __name__ == "__main__":
-	app.run(debug='True', host='0.0.0.0')
+	app.run(debug='True', host='0.0.0.0', port=8000)
