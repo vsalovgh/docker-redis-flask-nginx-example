@@ -8,6 +8,7 @@ services:
     volumes:
       - /app/static
   redis:
+    restart: always
     image: "redis"
   nginx:
     restart: always
