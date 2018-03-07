@@ -11,6 +11,6 @@ $ sudo docker-compose stop
 $ sudo docker-compose build
 $ sudo docker-compose up
 
-4. Run ifconfig and find your machines IP address e.g. inet addr: <example ip>
+4. Run ifconfig and find your machines IP address e.g. inet addr: example-ip
 
-5. Open the app in your browser, url: <example ip>:8084/
+5. Open the app in your browser, url: example-ip:8084/
