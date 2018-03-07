@@ -7,8 +7,11 @@ A simple version of app which logs timestamp/IP address to back-end API, with fr
 https://docs.docker.com/compose/install/#install-compose
 
 3. Go to repo folder, under /myapp, run commands:
+
 $ sudo docker-compose stop
+
 $ sudo docker-compose build
+
 $ sudo docker-compose up
 
 4. Run ifconfig and find your machines IP address e.g. inet addr: example-ip
